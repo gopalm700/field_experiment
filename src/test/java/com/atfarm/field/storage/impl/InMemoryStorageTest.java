@@ -23,19 +23,19 @@ public class InMemoryStorageTest {
 
 
     @Test(expected = InvalidTimeException.class)
-    public void exceptionForOldValue() {
+    public void shouldGetExceptionForOldValue() {
         memory.put(NOW.minus(30, DAYS).minus(1, SECONDS), e -> e.add(10.0));
     }
 
 
     @Test(expected = InvalidTimeException.class)
-    public void exceptionForFutureValue() {
+    public void shouldGetExceptionForFutureValue() {
         memory.put(NOW.plus(5, SECONDS), e -> e.add(5.0));
     }
 
 
     @Test
-    public void testSlotForOneValue() {
+    public void testSlotComputationForOneValue() {
         memory.put(NOW, s -> s.add(12.0));
 
         final FieldConditionStatistic value = memory.getSlot(NOW).getValue();
@@ -44,7 +44,7 @@ public class InMemoryStorageTest {
 
 
     @Test
-    public void testSlotSameTimeMultipleValue() {
+    public void testSlotComputationultipleValue() {
         memory.put(NOW, s -> s.add(10.0));
         memory.put(NOW, s -> s.add(20.0));
         memory.put(NOW, s -> s.add(30.0));
@@ -65,7 +65,7 @@ public class InMemoryStorageTest {
 
 
     @Test
-    public void testOneValue() {
+    public void testsingleReducedValue() {
         memory.put(NOW, e -> e.add(100.0));
         final FieldConditionStatistic value = memory.collate(FieldConditionStatistic::plus);
         assertThat(value).isEqualTo(FieldConditionStatistic.builder().count(1).max(100.0).min(100.0).sum(100.0).build());
