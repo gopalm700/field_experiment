@@ -21,3 +21,9 @@ Maven:
 ./mvnw clean install
 ./mvnw spring-boot:run  
 ```
+
+
+# Improvement Scope:
+1. Add persistence layer.
+2. Add Security Header.
+3. Add custom logging.
