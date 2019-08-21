@@ -46,9 +46,7 @@ paths:
     get:
       tags:
       - "Field Condition"
-      summary: "Finds Pets by status"
-      description: "Multiple status values can be provided with comma separated strings"
-      operationId: "findPetsByStatus"
+      summary: "Fetch Conditions for last 30 days"
       produces:
       - "application/json"
       responses:
