@@ -1,0 +1,89 @@
+swagger: "2.0"
+info:
+  description: "This is a sample web application for Field details."
+  version: "1.0.0"
+  title: "Field Condition"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "gopalm700@gmail.com"
+host: "localhost:8080"
+basePath: "/api"
+tags:
+- name: "Field Condition"
+  description: "Everything about your Pets"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+schemes:
+- "http"
+paths:
+  /field-conditions:
+    post:
+      tags:
+      - "Field Condition"
+      summary: "Add new data"
+      description: ""
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Pet object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/FieldCondition"
+      responses:
+        400:
+          description: "Invalid input"
+        201:
+          description: "Created"
+        204:
+          description: "Invalid Time stamp"
+        500:
+          description: "Internal Server error"
+    
+  /field-statistics:
+    get:
+      tags:
+      - "Field Condition"
+      summary: "Finds Pets by status"
+      description: "Multiple status values can be provided with comma separated strings"
+      operationId: "findPetsByStatus"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+              $ref: "#/definitions/FieldStatistics"
+ 
+definitions:
+  FieldCondition:
+    type: "object"
+    properties:
+      vegetation:
+        type: "number"
+        format: "double"
+        example: 5.0
+      occurrenceAt:
+        type: "string"
+        format: "date-time"
+  
+  FieldStatistics:
+    type: "object"
+    properties:
+      vegetation:
+        $ref: "#/definitions/Data"
+  Data:
+    type: "object"
+    properties:
+      max:
+        type: "number"
+      min:
+        type: "number"
+      avg:
+        type: "number"
+  
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
