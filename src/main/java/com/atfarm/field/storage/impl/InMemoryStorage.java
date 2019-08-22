@@ -101,7 +101,6 @@ public class InMemoryStorage<T> implements DataStrorage<T> {
     private int checkSlotIndex(final LocalDateTime time) {
         LocalDateTime now = this.now.get();
 
-        LocalDateTime test = now.minus(30, DAYS);
         if (now.minus(30, DAYS).isAfter(time)) {
             throw new InvalidTimeException("Not require to store old time");
         }

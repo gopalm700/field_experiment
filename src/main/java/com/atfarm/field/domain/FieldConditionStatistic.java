@@ -45,7 +45,7 @@ public class FieldConditionStatistic {
             return obj;
         }
         if (obj.equals(ZERO)) {
-            return obj;
+            return this;
         }
         return FieldConditionStatistic.builder()
             .count(this.getCount() + obj.getCount())
