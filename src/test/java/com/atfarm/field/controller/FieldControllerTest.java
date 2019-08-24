@@ -36,7 +36,7 @@ public class FieldControllerTest {
 
 
     @Test
-    public void testHappyPath() throws Exception {
+    public void shouldCreateRecord() throws Exception {
         doNothing().when(fieldService).add(any(FieldCondition.class));
         mvc.perform(post("/api/field-conditions")
             .contentType("application/json")
