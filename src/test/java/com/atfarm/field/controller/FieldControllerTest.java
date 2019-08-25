@@ -55,7 +55,7 @@ public class FieldControllerTest {
         mvc.perform(post("/api/field-conditions")
             .contentType("application/json")
             .content("{\"vegetation\": 10.0,\"occurrenceAt\": \"2019-04-23T08:50Z\"}"))
-            .andExpect(status().isNoContent());
+            .andExpect(status().isAccepted());
     }
 
 

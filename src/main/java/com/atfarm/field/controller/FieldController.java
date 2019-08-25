@@ -1,6 +1,7 @@
 package com.atfarm.field.controller;
 
 
+import com.atfarm.field.controller.dto.ResponseDto;
 import com.atfarm.field.controller.dto.StatisticsDto;
 import com.atfarm.field.controller.dto.FieldCondition;
 import com.atfarm.field.service.FieldService;
@@ -22,9 +23,10 @@ public class FieldController {
 
     @PostMapping(path="/field-conditions",consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addValue(@RequestBody @Valid FieldCondition condition){
+    public ResponseDto addValue(@RequestBody @Valid FieldCondition condition){
         logger.debug("adding data ");
         service.add(condition);
+        return new ResponseDto("Data added Successfully");
     }
 
     @GetMapping(path = "/field-statistics", produces = "application/json")
